@@ -26,13 +26,20 @@ public class ArrayListImplementation<E> {
 		while(temp<size){
 			arr[temp]=arr[temp+1];
 			arr[temp+1] = null;
-			temp++;
-			
+			temp++;	
 		}
 		size--;
 		
 		if(size>0 && size==arr.length/4) 
 			resize(arr.length/2);
+		
+	}
+	
+	public Object get(int i){
+		if(i<size)
+			return arr[i];
+		else 
+			throw new ArrayIndexOutOfBoundsException();
 		
 	}
 	
