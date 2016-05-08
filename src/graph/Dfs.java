@@ -12,6 +12,8 @@ public class Dfs {
 	private int[] edgeTo; //Track the connected vertex
 	private int count;
 	private int s;
+	private int id[]; //
+	private int countCC;
 	
 	public Dfs(Graph G, int s) {
 		this.s=s;
@@ -20,9 +22,24 @@ public class Dfs {
 		dfs(G,s);
 	}
 	
+	//Connected Components constructor. It will count the number of connected components.
+	public Dfs(Graph G){
+		marked = new boolean[G.V()]; //initialize empty boolean array.
+		id = new int[G.V()]; //initialize empty boolean array.
+		
+		for(int i=0;i<G.V();i++){
+			if(!marked[i])
+			{
+				dfs(G,s);
+				countCC++;
+			}
+		}
+	}
+	
 	private void dfs(Graph G,int s){
 		marked[s] = true;
 		count++;
+		id[s] = countCC;
 		for(int i:G.adj(s)){
 			if(!marked[i]){
 				dfs(G,i);
@@ -30,6 +47,11 @@ public class Dfs {
 			}
 				
 		}
+	}
+	
+	//count the number of connected components.
+	public int countCC(int v){
+		return id[v];
 	}
 	
 	//iterate till we reach source i.e s and push all vertices to the stack. This will give a path from a vertex to 
