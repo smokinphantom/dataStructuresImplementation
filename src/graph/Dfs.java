@@ -49,6 +49,12 @@ public class Dfs {
 		}
 	}
 	
+	//checks whether 2 vertices are connected or not
+	public boolean connected(int v, int w)
+	{
+		return id[v]==id[w];
+	}
+	
 	//count the number of connected components.
 	public int countCC(int v){
 		return id[v];
