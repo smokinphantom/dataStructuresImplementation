@@ -41,8 +41,33 @@ public class BSTFunctions<Key extends Comparable<Key>,Value>{
 			x.right=put(x.right, key, val);
 		else
 			x.value = val;
-
+		
+		x.count = 1+size(x.left)+size(x.right);
+		
 		return x;
+	}
+	
+	//returns the number of keys less than the key sedgewick
+	public int rank(Key key){
+		int rank = rank(key,rootS);
+		return rank;
+	}
+	
+	private int rank(Key key, TreeNode x) {
+		int cmp = key.compareTo((Key) x.key);
+		
+		//if key is less than root,go left
+		if(cmp<0) return rank(key,x.left);
+		//if key is greater, root size 1 + count of left node tree + rank of right
+		else if(cmp>0) return 1+size(x.left)+rank(key,x.right);
+		//if value is same, return count of left node
+		else return size(x.left);	
+	}
+
+	//return the count of the node
+	private int size(TreeNode x) {
+		if(x==null) return 0;
+		return x.count;
 	}
 
 	//search sedgewick

@@ -23,7 +23,7 @@ public class ArrayListImplementation<E> {
 		if(i>size) throw new ArrayIndexOutOfBoundsException();
 		arr[i]=null;
 		int temp=i;
-		while(temp<size){
+		while(temp<size-1){
 			arr[temp]=arr[temp+1];
 			arr[temp+1] = null;
 			temp++;	
@@ -63,13 +63,8 @@ public class ArrayListImplementation<E> {
 		test.add(1);
 		test.add(2);
 		test.add(3);
-		test.add(4);
-		test.add(5);
-		test.remove(4);
 		test.remove(2);
-		test.remove(1);
-		test.remove(0);
-		
+			
 	}
 
 }

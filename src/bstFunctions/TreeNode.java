@@ -7,6 +7,7 @@ public class TreeNode<Key,Value> {
 	TreeNode left;
 	TreeNode right;
 	TreeNode next;
+	int count;
 	
 	public TreeNode(Key key,Value value){
 		this.key = key;
